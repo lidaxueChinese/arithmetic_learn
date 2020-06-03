@@ -1,4 +1,4 @@
-package arithmetic.partiton;
+package arithmetic.partiton201910;
 /**找出出现超过一半的数字，有一个数组里面有一串数字，寻找出现大于一半的那个数字
  * 该算法的实现 和 前k 大的数组（前k大的数字不需要排序）,只不过需要通过条件 判断出要找出中位数-即找出第 n/2 大的数字
  * 改算法的时间复杂度是:O(n),平均partitionIndex就应该排到中位数
