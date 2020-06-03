@@ -13,6 +13,7 @@ public class FindMoreHalfNumber {
         int leftSlideIndex = startIndex;
         int rightSlideIndex = endIndex;
         int index = startIndex;
+        //while end 代表完成了一轮排序，int element = arr[index]即已经实现 < element 排在该元素前面； >= element 排在了该元素后面
         while(leftSlideIndex < rightSlideIndex){
              while (leftSlideIndex< rightSlideIndex && arr[index] <= arr[rightSlideIndex]){
                  rightSlideIndex --;
