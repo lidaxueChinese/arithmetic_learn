@@ -34,8 +34,7 @@ public class HeapSort {
      * @param length 表示date的前多少个元素需要进行heap调整
      */
     public void siftDown(int[] date,int length){
-         for(int i = 0;i<length;i++){
-               int siftIndex = i;
+              int siftIndex = 0;
               while(getLeftChildIndex(siftIndex) < length){
                     int lessChildIndex = getLeftChildIndex(siftIndex);
                     if(getRightChildIndex(siftIndex) < length){
@@ -53,7 +52,6 @@ public class HeapSort {
                         break;
                     }
               }
-         }
     }
 
     public static void main(String[] args){
