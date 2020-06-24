@@ -13,17 +13,18 @@ public class StrExpress {
     public static void main(String[] args) {
 
 
-        String str = "2+6/3+10";
+        String str = "2+8/2*4+10-3*4+6";
         List<String> list = new ArrayList<>();
         char c0 = '0';
         char c9 = '9';
 
         int lastIndex = 0;
-        for(int i=0;i<str.length();i++){
-            if(i == str.length() -1){
+        for(int i=0;i<=str.length();i++){
+            if(i == str.length()){
                 //最后一位
                 String num = str.substring(lastIndex,str.length());
                 list.add(num);
+                break;
             }
             //数字
            if(c0 <= str.charAt(i) && str.charAt(i) <= c9){
@@ -44,32 +45,32 @@ public class StrExpress {
         Stack<String> opeStack = new Stack<>();
 
         //是否需要计算，如果出现currentOpe 小于 lastOpe
-        boolean isCompute = false;
+        //boolean isCompute = false;
         for(int index = list.size()-1; index >= 0;index --){
              if(index % 2 == 0){ //奇数表示数字
                  Integer currentValue = new Integer(list.get(index));
-                 if(!isCompute) {
-                     numStack.push(currentValue);
-                 }else{
-                     Integer computeSecondValue = numStack.pop();
-                     String ope = opeStack.pop();
-                     Integer value = compute(currentValue,computeSecondValue,ope);
-                     numStack.push(value);
-                     //是否计算还原
-                     isCompute = false;
-
-                 }
+                 numStack.push(currentValue);
              }else{ //偶数表示操作符
                  String ope = list.get(index);
                  if(opeStack.isEmpty()){
                      opeStack.push(list.get(index));
                  }else{
-                     if(isComputeOpeStr(ope)){//需要计算
-                         isCompute =true;
-                         opeStack.push(ope);
-                     }else{
-                       opeStack.push(ope);
+                     while(true) {
+                         String lastOpe = opeStack.peek();
+                         if(opeStack.isEmpty()){
+                             break;
+                         }else if (isGreaterOpeEqualStr(ope, lastOpe)) {//需要计算
+                             break;
+                         } else {
+
+                             Integer firstNum = numStack.pop();
+                             String computeOpe = opeStack.pop();
+                             Integer secondNum = numStack.pop();
+                             Integer value = compute(firstNum, secondNum, computeOpe);
+                             numStack.push(value);
+                         }
                      }
+                     opeStack.push(ope);
                  }
              }
         }
@@ -83,9 +84,10 @@ public class StrExpress {
 
     }
 
-    private static boolean isComputeOpeStr(String ope){
-        int ope1Value = opeStr2Integer(ope);
-        if(ope1Value > 0){
+    private static boolean isGreaterOpeEqualStr(String ope1,String ope2){
+        int ope1Value = opeStr2Integer(ope1);
+        int ope2Value = opeStr2Integer(ope2);
+        if(ope1Value >= ope2Value){
             return true;
         }else{
             return false;
