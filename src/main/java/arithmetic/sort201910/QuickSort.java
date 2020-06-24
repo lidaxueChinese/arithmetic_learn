@@ -22,6 +22,10 @@ public class QuickSort {
 
     /**
      *感觉更容易理解一些
+     * 本质上partitionIndex 会和startIndex 或者 endIndex 其中一个“在一起”。
+     * 当在startIndex位置上时，遍历的是endIndex.当发生需要交换时，endIndex被交换到startIndex位置上。endIndex上的位置被空出来，
+     * partitionIndex可以被转移到endIndex位置上。然后遍历startIndex
+     *
      */
     private static int getPartitionIndex(int[] arr,int startIndex,int endIndex){
         int combineValue = arr[startIndex];
