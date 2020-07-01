@@ -1,4 +1,4 @@
-package arithmetic.aa202006.partition;
+package arithmetic.aa202006.str;
 /**
  * Created by lidaxue on 2020/6/18.
  * 最长公共子串
