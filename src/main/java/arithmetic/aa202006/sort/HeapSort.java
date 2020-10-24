@@ -1,4 +1,4 @@
-package arithmetic;
+package arithmetic.aa202006.sort;
 
 /**
  * Created by ldxPC on 2018/10/23.
