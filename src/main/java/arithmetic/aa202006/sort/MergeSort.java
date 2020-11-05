@@ -56,6 +56,7 @@ public class MergeSort {
     //遍历迭代
     public void iteMergeSort(int[] arr,int[] pos){
         int arrLen = arr.length;
+        //每一步走多远： 1、2、4、pre(n) *2 (pre n 代表前一个值)
         for(int step = 1;step<arrLen;step*=2){
             for(int start=0;start<arrLen;start=start+2*step){
                 int leftStartIndex = start;
